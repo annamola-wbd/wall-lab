@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Wall Lab",
+  "version": "0.1.0",
+  "description": "Toggle CNN paywall flags, location, and page gates on a local content-hub stack, and save setups per wall.",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": [
+    "*://localhost/*",
+    "*://*.localhost/*",
+    "*://127.0.0.1/*",
+    "*://localhost.cnn.com/*",
+    "*://*.local.cnn.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Wall Lab"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://localhost/*",
+        "*://*.localhost/*",
+        "*://127.0.0.1/*",
+        "*://localhost.cnn.com/*",
+        "*://*.local.cnn.com/*"
+      ],
+      "js": ["src/hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    }
+  ]
+}

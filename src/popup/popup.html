@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wall Lab</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Wall Lab</h1>
+      <span id="host" class="muted"></span>
+    </header>
+
+    <p id="notice" class="notice" hidden></p>
+
+    <section>
+      <h2>Saved setups</h2>
+      <ul id="saved" class="saved"></ul>
+      <div class="row">
+        <input id="setup-name" type="text" placeholder="Name this setup" />
+        <button id="save" type="button">Save</button>
+      </div>
+    </section>
+
+    <form id="form">
+      <section>
+        <h2>Location</h2>
+        <div id="locations" class="chips"></div>
+        <h3>State</h3>
+        <div id="states" class="chips"></div>
+        <p class="muted" id="region-hint"></p>
+      </section>
+
+      <section>
+        <h2>Page gates</h2>
+        <p class="muted">
+          Rewrites what the server baked into the article from .env.
+        </p>
+        <div id="gates"></div>
+      </section>
+
+      <section>
+        <h2>Regional flags <span id="region-label" class="muted"></span></h2>
+        <div id="region-flags"></div>
+      </section>
+
+      <section>
+        <h2>Client env flags</h2>
+        <p class="muted">
+          Client-side reads only. Server render still uses .env.
+        </p>
+        <div id="env-flags"></div>
+      </section>
+    </form>
+
+    <footer>
+      <button id="apply" type="button" class="primary">Apply and reload</button>
+      <button id="reset-meters" type="button">Reset meters</button>
+      <button id="clear" type="button">Clear overrides</button>
+      <p id="status" class="status" role="status"></p>
+    </footer>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
